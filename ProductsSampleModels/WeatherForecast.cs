@@ -1,6 +1,6 @@
 using System;
 
-namespace ProductsSampleAPI
+namespace ProductsSampleModels.Models
 {
     public class WeatherForecast
     {

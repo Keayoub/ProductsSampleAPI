@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductsSampleAPI.Models;
+using ProductsSampleModels.Models;
 using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,10 +12,10 @@ namespace ProductsSampleAPI.Controllers
     {
 
         static List<Product> _products = new List<Product> {
-            new Product { Id = 1, Name = "Apple", Description = "Apple", Quantity = 10 },
-            new Product { Id = 2, Name = "Orange", Description = "Orange", Quantity = 10 },
-            new Product { Id = 3, Name = "Banana", Description = "Banana", Quantity = 10 },
-            new Product { Id = 4, Name = "Limon", Description = "Limon", Quantity = 10 },
+            new Product { Id = 1, Name = "Apple", Category = "Fruit", Price = 10 },
+            new Product { Id = 2, Name = "Orange", Category = "Fruit", Price = 10 },
+            new Product { Id = 3, Name = "Banana", Category = "Fruit", Price = 10 },
+            new Product { Id = 4, Name = "Limon", Category = "Fruit", Price = 10 },
         };
 
         // GET: /<Products>
@@ -45,8 +45,8 @@ namespace ProductsSampleAPI.Controllers
         {
             var newprod = _products.Find(p => p.Id == prod.Id);
             newprod.Name = prod.Name;
-            newprod.Description = prod.Description;
-            newprod.Quantity = prod.Quantity;
+            newprod.Category = prod.Category;
+            newprod.Price = prod.Price;
         }
 
         // DELETE api/<ProductsController>/5
