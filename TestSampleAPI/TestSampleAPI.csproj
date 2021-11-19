@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProductsSampleModels\ProductsSample.Models.csproj" />
+    <ProjectReference Include="..\ProductsSampleModels\ProductsSampleAPi.Models.csproj" />
   </ItemGroup>
 
 </Project>

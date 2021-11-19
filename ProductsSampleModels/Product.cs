@@ -1,11 +1,14 @@
-﻿namespace ProductsSampleModels.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ProductsSampleAPI.Models
 {
+    [Table(nameof(Product), Schema = "SalesLT")]
     public class Product
     {
-        public int Id { get; set; }
+        public int ProductID { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string Category { get; set; }
+        public decimal ListPrice { get; set; }
+        public string ProductNumber { get; set; }
 
     }
 }

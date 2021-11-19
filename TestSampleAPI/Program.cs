@@ -1,4 +1,4 @@
-﻿using ProductsSampleModels.Models;
+﻿using ProductsSampleAPI.Models;
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -16,7 +16,7 @@ namespace TestSampleAPI
         static void ShowProduct(Product product)
         {
             Console.WriteLine($"Name: {product.Name}\tPrice: " +
-                $"{product.Price}\tCategory: {product.Category}");
+                $"{product.ListPrice}\tCategory: {product.ProductNumber}");
         }
 
         static async Task<Uri> CreateProductAsync(Product product)
@@ -44,7 +44,7 @@ namespace TestSampleAPI
         static async Task<Product> UpdateProductAsync(Product product)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync(
-                $"/products/{product.Id}", product);
+                $"/products/{product.ProductID}", product);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated product from the response body.
@@ -72,30 +72,30 @@ namespace TestSampleAPI
                 // Create a new product
                 Product product = new Product
                 {
-                    Id = 11,
+                    ProductID = 12,
                     Name = "From Client",
-                    Price = 100,
-                    Category = "Widgets"
+                    ListPrice = 100,
+                    ProductNumber = "Widgets"
                 };
 
                 var url = await CreateProductAsync(product);
                 Console.WriteLine($"Created at {url}");
 
                 // Get the product
-                product = await GetProductAsync(product.Id);
+                product = await GetProductAsync(product.ProductID);
                 ShowProduct(product);
 
                 // Update the product
                 Console.WriteLine("Updating price...");
-                product.Price = 80;
+                product.ListPrice = 80;
                 await UpdateProductAsync(product);
 
                 // Get the updated product
-                product = await GetProductAsync(product.Id);
+                product = await GetProductAsync(product.ProductID);
                 ShowProduct(product);
 
                 // Delete the product
-                var statusCode = await DeleteProductAsync(product.Id);
+                var statusCode = await DeleteProductAsync(product.ProductID);
                 Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
 
             }
